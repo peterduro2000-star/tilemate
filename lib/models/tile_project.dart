@@ -4,7 +4,7 @@ import 'enums.dart';
 import 'tile_calculation.dart';
 
 /// A project groups multiple room calculations into one job/quote.
-/// Tillers can total up costs across rooms and generate a single client PDF.
+/// Tilers can total up costs across rooms and generate a single client PDF.
 class TileProject {
   final String id;
   final String name;           // e.g. "Johnson Bathroom Reno"

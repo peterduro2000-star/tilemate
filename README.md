@@ -1,6 +1,6 @@
-# tilepave_pro
+# Tilemate
 
-A new Flutter project.
+Smart Tiling Assistant.
 
 ## Getting Started
 

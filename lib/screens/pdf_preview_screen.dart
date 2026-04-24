@@ -60,7 +60,7 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
       'Quote';
 
   String get _filename =>
-      'TileMate_${_title.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')}.pdf';
+      'Tilemate_${_title.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')}.pdf';
 
   Future<void> _generatePdf() async {
     setState(() {
@@ -101,7 +101,7 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
     await file.writeAsBytes(_pdfBytes!);
     await Share.shareXFiles(
       [XFile(file.path, mimeType: 'application/pdf')],
-      subject: 'TileMate Quote – $_title',
+      subject: 'Tilemate Quote – $_title',
     );
   }
 

@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Tile Mate"
+        android:label="Tilemate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -23,10 +23,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2"/>
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9517040078399699~8973105179"/>
-           
     </application>
     <queries>
         <intent>

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "tilepave_pro" "\0"
+            VALUE "CompanyName", "Peterdev" "\0"
+            VALUE "FileDescription", "Tilemate" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "tilepave_pro" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "tilepave_pro.exe" "\0"
-            VALUE "ProductName", "tilepave_pro" "\0"
+            VALUE "InternalName", "tilemate" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Peterdev. All rights reserved." "\0"
+            VALUE "OriginalFilename", "tilemate.exe" "\0"
+            VALUE "ProductName", "Tilemate" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'theme/app_theme.dart';
 import 'screens/main_shell.dart';
@@ -16,11 +15,6 @@ void main() {
         DeviceOrientation.portraitUp,
         DeviceOrientation.portraitDown,
       ]);
-
-      await MobileAds.instance.initialize().timeout(
-        const Duration(seconds: 3),
-        onTimeout: () => InitializationStatus({}),
-      );
 
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -43,7 +37,7 @@ void main() {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'TileMate — Startup Error',
+                      'Tilemate - Startup Error',
                       style: TextStyle(
                         color: Color(0xFFF5A623),
                         fontSize: 16,
@@ -77,7 +71,7 @@ class TileMateApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TileMate',
+      title: 'Tilemate',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
       home: const MainShell(),

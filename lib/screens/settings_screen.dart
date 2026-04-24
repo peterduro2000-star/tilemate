@@ -95,36 +95,81 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _exportBackup() async {
-    setState(() => _backupBusy = true);
-    try {
-      final data = await _buildBackupData();
-      final json = const JsonEncoder.withIndent('  ').convert(data);
-      final dir  = await getApplicationDocumentsDirectory();
-      final file = File('${dir.path}/tilemate_backup.json');
-      await file.writeAsString(json);
+  setState(() => _backupBusy = true);
+  try {
+    final data = await _buildBackupData();
+    final json = const JsonEncoder.withIndent('  ').convert(data);
+    final dir  = await getApplicationDocumentsDirectory();
+    final file = File('${dir.path}/tilemate_backup.json');
+    await file.writeAsString(json);
 
-      // Save last backup date
-      final prefs = await SharedPreferences.getInstance();
-      final now = DateTime.now().toIso8601String();
-      await prefs.setString('last_backup_date', now);
-      setState(() => _lastBackupDate = now);
+    // Save last backup date
+    final prefs = await SharedPreferences.getInstance();
+    final now = DateTime.now().toIso8601String();
+    await prefs.setString('last_backup_date', now);
+    setState(() => _lastBackupDate = now);
 
-      await Share.shareXFiles(
-        [XFile(file.path)],
-        subject: 'TileMate Backup',
-        text: 'TileMate backup — ${DateTime.now().toString().substring(0, 10)}',
+    // Ask user what to do
+    if (!mounted) return;
+    await showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.surface,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (_) => Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Backup Created',
+                style: TextStyle(fontSize: 17,
+                    fontWeight: FontWeight.w800, color: AppTheme.textHigh)),
+            const SizedBox(height: 6),
+            const Text('tilemate_backup.json saved to your device.',
+                style: TextStyle(fontSize: 12, color: AppTheme.textLow)),
+            const SizedBox(height: 20),
+            TmAmberButton(
+              label: 'Share via WhatsApp / Gmail',
+              icon: Icons.share,
+              onPressed: () async {
+                Navigator.pop(context);
+                await Share.shareXFiles(
+                  [XFile(file.path)],
+                  subject: 'Tilemate Backup',
+                  text: 'Tilemate backup — ${DateTime.now().toString().substring(0, 10)}',
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.check, color: AppTheme.amber),
+                label: const Text('Done — file saved to device',
+                    style: TextStyle(color: AppTheme.amber)),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppTheme.amber),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  } catch (e) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Export failed: $e'),
+            backgroundColor: AppTheme.error),
       );
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Export failed: $e'),
-              backgroundColor: AppTheme.error),
-        );
-      }
-    } finally {
-      if (mounted) setState(() => _backupBusy = false);
     }
+  } finally {
+    if (mounted) setState(() => _backupBusy = false);
   }
+}
 
   Future<void> _importBackup() async {
     setState(() => _restoreBusy = true);
@@ -438,7 +483,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Tile Mate',
+                              Text('Tilemate',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800,

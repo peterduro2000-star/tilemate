@@ -1,11 +1,11 @@
 {
-    "name": "tilepave_pro",
-    "short_name": "tilepave_pro",
+    "name": "Tilemate",
+    "short_name": "Tilemate",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Smart Tiling Assistant",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
