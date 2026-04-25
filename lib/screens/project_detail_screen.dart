@@ -28,11 +28,6 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
     _project = widget.project;
   }
 
-  String get _fmt => NumberFormat.currency(
-        symbol: _project.currencySymbol,
-        decimalDigits: 2,
-      ).format(_project.grandTotal);
-
   void _removeRoom(String roomId) {
     setState(() => _project = _project.removeRoom(roomId));
   }
@@ -45,10 +40,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
     final buf = StringBuffer()
       ..writeln('QUOTE — ${_project.name}')
       ..writeln('─' * 36);
-    if (_project.clientName != null)
+    if (_project.clientName != null) {
       buf.writeln('Client:   ${_project.clientName}');
-    if (_project.siteAddress != null)
+    }
+    if (_project.siteAddress != null) {
       buf.writeln('Site:     ${_project.siteAddress}');
+    }
     buf.writeln('Date:     ${DateFormat('d MMM yyyy').format(_project.createdAt)}');
     buf.writeln();
 
@@ -74,10 +71,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pop(_project);
-        return false;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          Navigator.of(context).pop(_project);
+        }
       },
       child: Scaffold(
         backgroundColor: AppTheme.bg,

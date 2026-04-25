@@ -12,7 +12,6 @@ const _surface   = PdfColor.fromInt(0xFF1A1A1A);
 const _surfaceAlt= PdfColor.fromInt(0xFF242424);
 const _border    = PdfColor.fromInt(0xFF2E2E2E);
 const _amber     = PdfColor.fromInt(0xFFF5A623);
-const _amberDark = PdfColor.fromInt(0xFFB87A14);
 const _textHigh  = PdfColor.fromInt(0xFFF0EDE8);
 const _textMid   = PdfColor.fromInt(0xFF9A9590);
 const _textLow   = PdfColor.fromInt(0xFF5C5855);
@@ -756,7 +755,7 @@ class _CostBreakdownSection extends pw.StatelessWidget {
   @override
   pw.Widget build(pw.Context context) {
     final c = calculation;
-    final fmt = (double v) =>
+    String fmt(double v) =>
         NumberFormat.currency(symbol: c.currency.symbol, decimalDigits: 2)
             .format(v);
 
@@ -836,7 +835,7 @@ class _GroutSection extends pw.StatelessWidget {
     if (c.groutBagCoverage != null && c.groutBagCoverage! > 0) {
       bags = (c.floorArea / c.groutBagCoverage!).ceil();
     }
-    final fmt = (double v) =>
+    String fmt(double v) =>
         NumberFormat.currency(symbol: c.currency.symbol, decimalDigits: 2)
             .format(v);
 
@@ -1111,11 +1110,6 @@ class _ProjectSummarySection extends pw.StatelessWidget {
 
   @override
   pw.Widget build(pw.Context context) {
-    final fmt = (double v) => NumberFormat.currency(
-          symbol: project.currencySymbol,
-          decimalDigits: 2,
-        ).format(v);
-
     return pw.Padding(
       padding: const pw.EdgeInsets.symmetric(horizontal: 32),
       child: pw.Column(

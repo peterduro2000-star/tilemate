@@ -124,5 +124,5 @@ class TilePreset {
 
   @override
   String toString() =>
-      'TilePreset($name, ${tileLength}×${tileWidth}${tileUnit.label}, \$$pricePerTile/tile)';
+      'TilePreset($name, $tileLength×$tileWidth${tileUnit.label}, \$$pricePerTile/tile)';
 }

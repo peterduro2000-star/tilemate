@@ -111,7 +111,7 @@ extension CurrencyExtension on Currency {
     return name.toUpperCase();
   }
 
-  String get displayName => '$code (${symbol})';
+  String get displayName => '$code ($symbol)';
 }
 
 extension RoomUnitExtension on RoomUnit {

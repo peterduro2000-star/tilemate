@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math' as math;
 
 import 'enums.dart';
 import 'room_section.dart';
@@ -251,6 +250,6 @@ class TileCalculation {
   @override
   String toString() =>
       'TileCalculation($roomName, ${floorArea.toStringAsFixed(2)}m², '
-      '${totalTilesRequired} tiles, $boxesRequired boxes, '
-      '${currency.symbol}${totalCost.toStringAsFixed(2)})';
+      '$totalTilesRequired tiles, $boxesRequired boxes, '
+      '$currencySymbol${totalCost.toStringAsFixed(2)})';
 }

@@ -251,7 +251,7 @@ class _SectionTile extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               color: isSubtracted
-                  ? AppTheme.error.withOpacity(0.1)
+                  ? AppTheme.error.withValues(alpha: 0.1)
                   : AppTheme.amberGlow,
               borderRadius: BorderRadius.circular(8),
             ),

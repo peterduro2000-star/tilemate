@@ -179,7 +179,7 @@ class TileProject {
 
   @override
   String toString() =>
-      'TileProject($name, ${roomCount} rooms, ${currencySymbol}${grandTotal.toStringAsFixed(2)})';
+      'TileProject($name, $roomCount rooms, $currencySymbol${grandTotal.toStringAsFixed(2)})';
 }
 
 enum ProjectStatus {

@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:printing/printing.dart';
@@ -24,21 +23,19 @@ class PdfPreviewScreen extends StatefulWidget {
 
   const PdfPreviewScreen.singleRoom({
     super.key,
-    required TileCalculation calculation,
+    required this.calculation,
     this.companyName,
     this.companyPhone,
     this.companyEmail,
-  })  : calculation = calculation,
-        project = null;
+  }) : project = null;
 
   const PdfPreviewScreen.project({
     super.key,
-    required TileProject project,
+    required this.project,
     this.companyName,
     this.companyPhone,
     this.companyEmail,
-  })  : project = project,
-        calculation = null;
+  }) : calculation = null;
 
   @override
   State<PdfPreviewScreen> createState() => _PdfPreviewScreenState();
@@ -81,15 +78,19 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
               companyPhone: widget.companyPhone,
               companyEmail: widget.companyEmail,
             );
-      if (mounted) setState(() {
-        _pdfBytes = bytes;
-        _generating = false;
-      });
+      if (mounted) {
+        setState(() {
+          _pdfBytes = bytes;
+          _generating = false;
+        });
+      }
     } catch (e) {
-      if (mounted) setState(() {
-        _error = e.toString();
-        _generating = false;
-      });
+      if (mounted) {
+        setState(() {
+          _error = e.toString();
+          _generating = false;
+        });
+      }
     }
   }
 
@@ -278,7 +279,7 @@ class _ErrorView extends StatelessWidget {
               width: 64,
               height: 64,
               decoration: BoxDecoration(
-                color: AppTheme.error.withOpacity(0.1),
+                color: AppTheme.error.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: const Icon(Icons.error_outline,

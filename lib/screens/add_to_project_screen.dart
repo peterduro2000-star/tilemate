@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:uuid/uuid.dart';
 import '../models/models.dart';
 import '../repositories/project_repository.dart';
 import '../theme/app_theme.dart';
 import '../widgets/tm_widgets.dart';
 import 'project_edit_screen.dart';
-import 'project_detail_screen.dart';
 
 /// Lets the tiler attach a finished calculation to an existing project,
 /// or create a new project on the spot.

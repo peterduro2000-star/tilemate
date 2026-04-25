@@ -29,11 +29,13 @@ class _PresetsScreenState extends State<PresetsScreen> {
     try {
       final p = await _repo.getAllPresets();
       final currency = await loadGlobalCurrency();
-      if (mounted) setState(() {
-        _presets = p;
-        _currency = currency;
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _presets = p;
+          _currency = currency;
+          _loading = false;
+        });
+      }
     } catch (e) {
       if (mounted) setState(() { _error = e.toString(); _loading = false; });
     }
@@ -177,11 +179,11 @@ class _PresetCard extends StatelessWidget {
           width: 48, height: 48,
           decoration: BoxDecoration(color: AppTheme.amberGlow,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: AppTheme.amber.withOpacity(0.3))),
+              border: Border.all(color: AppTheme.amber.withValues(alpha: 0.3))),
           child: Center(child: AspectRatio(
             aspectRatio: (preset.tileLength / preset.tileWidth).clamp(0.3, 3.0),
             child: Container(margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(color: AppTheme.amber.withOpacity(0.4),
+                decoration: BoxDecoration(color: AppTheme.amber.withValues(alpha: 0.4),
                     borderRadius: BorderRadius.circular(2))),
           )),
         ),
@@ -252,7 +254,9 @@ class _PresetEditSheetState extends State<_PresetEditSheet> {
   @override
   void dispose() {
     for (final c in [_nameCtrl, _lengthCtrl, _widthCtrl, _priceCtrl,
-        _boxCountCtrl, _boxPriceCtrl, _brandCtrl, _codeCtrl]) c.dispose();
+        _boxCountCtrl, _boxPriceCtrl, _brandCtrl, _codeCtrl]) {
+      c.dispose();
+    }
     super.dispose();
   }
 

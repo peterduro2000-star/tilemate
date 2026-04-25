@@ -118,7 +118,7 @@ class _ProjectEditScreenState extends State<ProjectEditScreen> {
 
             const TmSectionLabel('Settings'),
             DropdownButtonFormField<Currency>(
-              value: _currency,
+              initialValue: _currency,
               decoration: const InputDecoration(labelText: 'Currency'),
               dropdownColor: AppTheme.surface,
               style: const TextStyle(color: AppTheme.textHigh, fontSize: 14),
@@ -132,7 +132,7 @@ class _ProjectEditScreenState extends State<ProjectEditScreen> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<ProjectStatus>(
-              value: _status,
+              initialValue: _status,
               decoration: const InputDecoration(labelText: 'Status'),
               dropdownColor: AppTheme.surface,
               style: const TextStyle(color: AppTheme.textHigh, fontSize: 14),

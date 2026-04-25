@@ -1,8 +1,4 @@
-/// TileMate models barrel export.
-/// Import this single file to access all models:
-/// ```dart
-/// import 'package:tilemate/models/models.dart';
-/// ```
+// Tilemate models barrel export.
 export 'enums.dart';
 export 'room_section.dart';
 export 'tile_preset.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 import '../models/models.dart';
@@ -351,10 +350,10 @@ class _TileCountCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
-                color: AppTheme.success.withOpacity(0.08),
+                color: AppTheme.success.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                    color: AppTheme.success.withOpacity(0.3)),
+                    color: AppTheme.success.withValues(alpha: 0.3)),
               ),
               child: Row(
                 children: [
@@ -543,7 +542,6 @@ class _WastageBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final total = patternPct + bufferPct;
     final maxDisplay = 30.0;
     final patternFrac = (patternPct / maxDisplay).clamp(0.0, 1.0);
     final bufferFrac = ((patternPct + bufferPct) / maxDisplay).clamp(0.0, 1.0);
@@ -567,7 +565,7 @@ class _WastageBar extends StatelessWidget {
                 height: 8,
                 width: w * bufferFrac,
                 decoration: BoxDecoration(
-                  color: AppTheme.amber.withOpacity(0.4),
+                  color: AppTheme.amber.withValues(alpha: 0.4),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -587,7 +585,7 @@ class _WastageBar extends StatelessWidget {
               _BarLegend(color: AppTheme.amber, label: 'Pattern'),
               const SizedBox(width: 14),
               _BarLegend(
-                  color: AppTheme.amber.withOpacity(0.4), label: 'Buffer'),
+                  color: AppTheme.amber.withValues(alpha: 0.4), label: 'Buffer'),
             ],
           ),
         ],

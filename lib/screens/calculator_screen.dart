@@ -289,7 +289,7 @@ class _CalculatorScreenState extends State<CalculatorScreen>
                                 color: AppTheme.amberGlow,
                                 borderRadius: BorderRadius.circular(6),
                                 border: Border.all(
-                                    color: AppTheme.amber.withOpacity(0.4)),
+                                    color: AppTheme.amber.withValues(alpha: 0.4)),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,

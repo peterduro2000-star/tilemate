@@ -186,6 +186,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       final content = await file.readAsString();
       final data    = json.decode(content) as Map<String, dynamic>;
 
+      if (!mounted) {
+        return;
+      }
+
       // Confirm restore
       final confirm = await showDialog<bool>(
         context: context,
@@ -346,7 +350,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 color: AppTheme.amberGlow,
                                 borderRadius: BorderRadius.circular(7),
                                 border: Border.all(
-                                    color: AppTheme.amber.withOpacity(0.4)),
+                                    color: AppTheme.amber.withValues(alpha: 0.4)),
                               ),
                               child: const Text('CHANGE',
                                   style: TextStyle(
@@ -474,7 +478,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               color: AppTheme.amberGlow,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                  color: AppTheme.amber.withOpacity(0.3)),
+                                  color: AppTheme.amber.withValues(alpha: 0.3)),
                             ),
                             child: const Icon(Icons.grid_4x4,
                                 color: AppTheme.amber, size: 20),

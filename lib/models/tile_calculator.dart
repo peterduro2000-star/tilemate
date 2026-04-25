@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:uuid/uuid.dart';
 
 import 'enums.dart';
@@ -40,7 +38,6 @@ class TileCalculator {
     // ── 4. Wastage ───────────────────────────────────────────────────────────
     final patternWastage = input.layoutPattern.baseWastagePercent;
     final totalWastage = patternWastage + input.extraBufferPercent;
-    final totalTilesExact = baseTiles * (1 + totalWastage / 100);
     final tilesNeeded = baseTiles.ceil();
     final wasteTiles = (baseTiles * totalWastage / 100).ceil();
     final totalTilesRequired = tilesNeeded + wasteTiles;
@@ -61,10 +58,6 @@ class TileCalculator {
     );
 
     // ── 7. Costs ─────────────────────────────────────────────────────────────
-    final effectivePricePerTile = input.boxPrice != null && tilesPerBox > 0
-        ? input.boxPrice! / tilesPerBox
-        : input.pricePerTile;
-
     final tileCost = boxesRequired *
         (input.boxPrice ?? (input.pricePerTile * tilesPerBox));
 
